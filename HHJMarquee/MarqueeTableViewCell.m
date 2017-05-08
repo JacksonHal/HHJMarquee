@@ -62,7 +62,11 @@
     if (_dataArry.count>1) {
         [self removeTimer];
         _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(updateData) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        /*
+         NSDefaultRunLoopMode:当滑动定时器时，不会暂停定时器；
+         NSRunLoopCommonModes:当滑动定时器时，暂停定时器
+         */
+        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
     }
 }
 
